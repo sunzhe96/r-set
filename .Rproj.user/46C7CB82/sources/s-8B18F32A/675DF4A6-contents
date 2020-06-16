@@ -1,0 +1,72 @@
+---
+title: A paged html thesis template for R Markdown users
+subtitle: A {pagedown} template.
+author: 
+  - name: William Brent Thorne
+    edu: BSc
+degree: Master of Documentation
+institute: Typeset University
+faculty: Reproducibility and FOSS
+department: Templates
+location: St. Catharines, ON 
+date:
+  - year: 2019
+    month: August
+sign_page: true
+dedication: A dedication line or two goes here.
+abstract: This is the abstract.
+preface: A preface to the thesis.
+acknowledge: Put the ackknowledgements here.
+committee:
+  - name: Jane Doe III
+    prefix: Dr
+    position: Chair of Department
+  - name: John Smith
+    prefix: Dr
+    position: Faculty Advisor
+lof: true
+lot: true
+toc-title: Contents
+output:
+  pagedown::thesis_paged: 
+    toc: true
+    number_sections: yes
+    pandoc_args: --mathjax
+    self_contained: no
+bibliography: packages.bib
+link-citations: yes
+# uncomment this line to produce HTML and PDF in RStudio:
+#knit: pagedown::chrome_print
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      fig.align = 'center')
+```
+
+# Motivation
+
+Moodle is a free and open-source learning management system.
+As a student in the institute of education, I am interested in virtual learning environment (VLE) such as Moodle and how to enhance the experience within VLE of both educator and student by data.
+
+# Extracting Moodle Data
+
+Moodle Data can be extracting in two ways. The first way is to access the database of Moodle website if you have the authority of the database. The second way which is I used in this project is web-scrapping technology. In R programming language, there is a package rvest makes it easy to scrape data from html web pages. Forum data of this course including posts, comments, posting date, and post topics was extracted using rvest package.
+
+## glance data 
+```{r}
+discussion_table <- readRDS("~/Documents/github/r-set/data/discussion_table")
+posts_table <- readRDS("~/Documents/github/r-set/data/posts_table_complete")
+head(posts_table)
+```
+
+
+# Measurements of Student Engagement
+
+Student Engagement is measured by three variables.
+
+1. How many posts each student
+2. number of times each student replies to the posts of other classmate
+3. number of positive comments given by professor 
+
+# Data Visualization
